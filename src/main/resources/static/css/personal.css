@@ -1,0 +1,13 @@
+li {
+	padding:0px 0px 0px 20px;
+}
+
+.myDiv {
+	top: 40%;
+    left: 50%;
+    width:27em;
+    height:18em;
+    margin-top: -9em;
+    margin-left: -15em;
+    position:fixed;
+}
