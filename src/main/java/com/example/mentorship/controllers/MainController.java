@@ -57,12 +57,11 @@ public class MainController {
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	@ResponseBody
-	public String registerUser(@ModelAttribute User user, HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+	public String registerUser(@ModelAttribute User user) throws IOException, ServletException {
 		if (doesUserExists(user.getUsername())) {
 			return "The user already exists!";
 		} else {
-			if (registerUser(user)) {
+			if (createUser(user)) {
 				return redirectAfterLogIn(user);
 			}
 		}
@@ -89,7 +88,7 @@ public class MainController {
 		}
 	}
 
-	private boolean registerUser(User user) {
+	private boolean createUser(User user) {
 		String query = "INSERT INTO users (username,password,role) VALUES (? , ? , ?)";
 		int update = template.update(query, user.getUsername(), user.getPassword(), "USER");
 		return update > 0;

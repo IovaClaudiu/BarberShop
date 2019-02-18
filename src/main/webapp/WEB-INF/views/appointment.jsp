@@ -24,34 +24,58 @@
 </head>
 <body>
 	<div class="myDiv">
+		
+		<h5 style="margin-bottom: 30px;">Please fill all the information for the appointment...</h5>
+		
+		<c:if test="${param.error != null}">
+            <div class="alert alert-danger alert-dismissible">
+   				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    			<strong>Failed to register the Appointment!</strong>  Please try again!
+ 			 </div>
+        </c:if>
+	
 		<form:form action="/book/add" method="POST" modelAttribute="appointment">
 			<p>
 				<label class="label label-primary" for="client_name">Name:</label>
-				<form:input path="client_name" class="form-control text-center" type="text" id="client_name"/>
+				<form:input path="clientName" class="form-control text-center" type="text" id="client_name"/>
+			</p>
+			
+			<p>
+				<label class="label label-primary" for="email">Email:</label>
+				<form:input path="email" class="form-control text-center" type="text" id="email"/>
+			</p>
+			
+			<p>
+				<label class="label label-primary" for="phone">Phone:</label>
+				<form:input path="phone" class="form-control text-center" type="text" id="phone" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
 			</p>
 			
 			<p style="display:grid">
 				<label class="label label-primary" for="action_type">Action type:</label>
-				<form:select path="action_type" items="${actions}" id="action_type" class="btn btn-primary dropdown-toggle"></form:select>
+				<form:select path="actionType" items="${actions}" id="action_type" class="btn btn-dark dropdown-toggle"></form:select>
 			</p>
 			
 			<p>
 				<label class="label label-primary" for="">Date:</label>
-				<form:input path="" type="text" id="datepicker" class="form-control text-center"/>
-			</p>
-			<p>
-				<label class="label label-primary" for="">Hour:</label>
-				<input class="timepicker timepicker-with-dropdown text-center form-control">
+				<form:input path="date" type="text" id="datepicker" class="form-control text-center" readonly="true"/>
 			</p>
 			
-			<button type="submit" class="btn btn-info" title="Done">Done</button>
+			<p>
+				<label class="label label-primary" for="">Hour:</label>
+				<form:input path="time" class="timepicker timepicker-with-dropdown text-center form-control" readonly="true"/>
+			</p>
+			
+			<div style="display: flex;justify-content: center;">
+				<button type="submit" class="btn btn-dark" title="Submit" style="margin-top: 30px; margin-bottom: 70px;">Submit Appointment</button>
+			</div>
+			
 		</form:form>
 	</div>
 	
 <script>
 $(function() {
    $("#datepicker").datepicker({
-   		dateFormat:"dd/mm/yy",
+   		dateFormat:"dd-mm-yy",
    		autoSize: true
    });
 });

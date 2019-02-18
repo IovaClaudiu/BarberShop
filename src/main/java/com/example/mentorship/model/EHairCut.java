@@ -2,26 +2,26 @@ package com.example.mentorship.model;
 
 public enum EHairCut {
 
-	TUNS("tuns") {
+	TUNS("TUNS") {
 		@Override
 		public double getDuration() {
 			return 2;
 		}
 	},
-	SPALAT("spalat") {
+	SPALAT("SPALAT") {
 		@Override
 		public double getDuration() {
 			return 0.5;
 		}
 	},
-	FREZA("freza") {
+	FREZA("FREZA") {
 		@Override
 		public double getDuration() {
 			return 1;
 		}
 	},
 
-	VOPSIT("vopsit") {
+	VOPSIT("VOPSIT") {
 
 		@Override
 		public double getDuration() {

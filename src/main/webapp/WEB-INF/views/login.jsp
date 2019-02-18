@@ -31,8 +31,10 @@
 					placeholder="Please enter the password" />
 			</p>
 
-			<button type="submit" class="btn btn-info" title="Log in">Log in</button>
-			<input type="button" onclick="javascript:registerUser();" class="btn btn-info" title="Register" value="Register"/>
+			<div style="display:grid">
+				<button type="submit" class="btn btn-light" title="Log in" style="margin-bottom: 10px;">Log in</button>
+				<input type="button" onclick="javascript:registerUser();" class="btn btn-light" title="Register" value="Register" style="border: 1px solid;"/>
+			</div>
 			
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form:form>

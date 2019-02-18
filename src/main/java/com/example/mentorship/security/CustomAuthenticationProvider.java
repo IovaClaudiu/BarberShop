@@ -23,6 +23,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public Authentication authenticate(Authentication authentication) {
 		String userName = authentication.getName();
 		String password = authentication.getCredentials() != null ? authentication.getCredentials().toString() : null;
+
 		try {
 			String query = "SELECT * FROM users Where username = ?";
 			User user = template.queryForObject(query, new BeanPropertyRowMapper<User>(User.class), userName);
